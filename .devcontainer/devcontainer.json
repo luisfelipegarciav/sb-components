@@ -1,0 +1,35 @@
+// See https://containers.dev/implementors/json_reference/ for configuration reference
+{
+	"name": "Vite Storybook",
+	"build": {
+		"context": "..",
+		"dockerfile": "../Dockerfile"
+	},
+	"mounts": [
+		"source=${localWorkspaceFolder}/,target=/03storybook,type=bind,consistency=consistent",
+		"source=node-modules-pro-03storybook,target=${containerWorkspaceFolder}/node_modules,type=volume"
+	],
+	"remoteEnv": {
+		// "WATCHPACK_POLLING": "true" // CRA
+		"CHOKIDAR_USEPOLLING": "true" // VITE
+	},
+	"customizations": {
+		// Configure properties specific to VS Code. 
+		"vscode": {
+			// Add VS code settings that will apply inside tinhe container
+			"settings": {
+				"files.eol": "\n",
+				"editor.tabSize": 2,
+				"editor.codeActionsOnSave": {
+					"source.fixAll.eslint": "explicit"
+				},
+				"editor.formatOnSave": true
+			},
+			// Add the IDs of extensions you want installed when the container is created.
+			"extensions": [
+				"dbaeumer.vscode-eslint",
+				"amazonwebservices.aws-toolkit-vscode"
+			]
+		}
+	}
+}
