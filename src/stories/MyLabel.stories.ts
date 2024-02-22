@@ -54,3 +54,11 @@ export const CustomColor: Story = {
 		allCaps: false,
 	}
 }
+
+export const CustomBackgroundColor: Story = {
+	args: {
+		label: 'Custom Background Color',
+		fontColor: '#ffffff',
+		backgroundColor: '#000000'
+	}
+}
